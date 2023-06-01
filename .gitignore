@@ -1,0 +1,17 @@
+
+build/
+
+devel/
+
+src/strategy/ar/__pycache__
+src/strategy/bb/__pycache__
+src/strategy/mar/__pycache__
+src/strategy/sp/__pycache__
+src/strategy/sr/__pycache__
+src/strategy/us/__pycache__
+src/strategy/obs/__pycache__
+src/strategy/wl/__pycache__
+
+\.catkin_workspace
+
+*.ods
