@@ -35,3 +35,21 @@
 [submodule "src/strategy/bb"]
 	path = src/strategy/bb
 	url = https://github.com/TKUICLab-humanoid/BB.git
+[submodule "src/strategy/us"]
+	path = src/strategy/us
+	url = https://github.com/TKUICLab-humanoid/US.git
+[submodule "src/strategy/mar"]
+	path = src/strategy/mar
+	url = https://github.com/TKUICLab-humanoid/MAR.git
+[submodule "src/strategy/sp"]
+	path = src/strategy/sp
+	url = https://github.com/TKUICLab-humanoid/SP.git
+[submodule "src/strategy/sr"]
+	path = src/strategy/sr
+	url = https://github.com/TKUICLab-humanoid/SR.git
+[submodule "src/strategy/wl"]
+	path = src/strategy/wl
+	url = https://github.com/TKUICLab-humanoid/WL.git
+[submodule "src/strategy/obs"]
+	path = src/strategy/obs
+	url = https://github.com/TKUICLab-humanoid/OBS.git
