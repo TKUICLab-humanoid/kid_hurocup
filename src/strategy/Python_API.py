@@ -64,6 +64,7 @@ class Sendmessage:
         self.yolo_YMax = 0
         self.yolo_Y = (self.yolo_YMin+self.yolo_YMax)/2
         self.yolo_X = (self.yolo_XMin+self.yolo_XMax)/2
+        self.execute = False
         #aaaa = rospy.init_node('talker', anonymous=True)
         object_list_sub = rospy.Subscriber("/Object/List",ObjectList, self.getObject)
         label_model_sub = rospy.Subscriber("/LabelModel/List",LabelModelObjectList, self.getLabelModel)
@@ -71,6 +72,7 @@ class Sendmessage:
         #image_raw_sub = rospy.Subscriber("colormodel_image",Image, self.RawImage)
         #origin_image_sub = rospy.Subscriber("orign_image",Image, self.OriginImage)
         start_sub = rospy.Subscriber("/web/start",Bool, self.startFunction)
+        execute_sub = rospy.Subscriber("/package/executecallback",Bool, self.executecallback)
         DIO_ack_sub = rospy.Subscriber("/package/FPGAack",Int16, self.DIOackFunction)
         sensor_sub = rospy.Subscriber("/package/sensorpackage",SensorPackage, self.sensorPackageFunction)
 
@@ -124,8 +126,11 @@ class Sendmessage:
         walkdata.theta = theta
         walkdata.sensor_mode = sensor
         self.continuous_value_pub.publish(walkdata)
+    def executecallback(self,msg):
+    #motion動作做完時回傳True,否則Fasle
+        self.execute = msg.data
 
-    def sendWalkParameter(self, mode, walk_mode, *, com_y_shift = 0, y_swing = 5.5, period_t = 330, t_dsp = 0, base_default_z = 3, right_z_shift = 0, base_lift_z = 0, com_height = 29.5, stand_height = 23.5, back_flag = False):
+    def sendWalkParameter(self, mode, walk_mode, *, com_y_shift = 0, y_swing = 5.5, period_t = 330, t_dsp = 0, base_default_z = 3, right_z_shift = 0, base_lift_z = 3, com_height = 29.5, stand_height = 23.5, back_flag = False):
         walkparameter = parameter()
         parasend2FPGA = Parameter_message()
 
@@ -239,7 +244,7 @@ class Sendmessage:
         #         self.color_mask_subject_size[i][j] = msg.Objectlist[i].Colorarray[j].size
         # time_end = time.time()
         # self.time = time_end - time_start
-        # self.data_check = True
+        self.data_check = True
     def sensorPackageFunction(self,msg):        
         self.imu_value_Roll  = msg.IMUData[0]
         self.imu_value_Pitch = msg.IMUData[1]

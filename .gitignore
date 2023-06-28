@@ -11,6 +11,7 @@ src/strategy/sr/__pycache__
 src/strategy/us/__pycache__
 src/strategy/obs/__pycache__
 src/strategy/wl/__pycache__
+src/strategy/__pycache__
 
 \.catkin_workspace
 
