@@ -14,5 +14,6 @@ src/strategy/wl/__pycache__
 src/strategy/__pycache__
 
 \.catkin_workspace
-
+detection.jpg
+detectiontxt
 *.ods
